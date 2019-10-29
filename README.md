@@ -34,7 +34,7 @@ search the memory and locate gadgets! It will support searching for the same ins
 registers at once, so that we don’t have to try all combinations manually. For
 example:
 
-![gadget search example](/gadget_search_example.JPG)
+<img src="/gadget_search_example.JPG" width="350" alt="gadget search example">
 
 Now we are ready to implement ROP.
 
