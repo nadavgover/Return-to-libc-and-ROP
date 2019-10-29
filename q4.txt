@@ -1,0 +1,12 @@
+The code is practically doing:
+pop ebp
+addresses.PUTS
+addresses.PUTS  # make eip go to puts
+add esp, 4
+address to string
+pop esp  # loop
+address of puts on stack
+
+a) The reason that the address of puts is the same throught the whole run time is that inside puts, the function pushes ebp onto the stack. So the overwrite is by its own address anyway, so the function in practice doesn't overwrite anything we need.
+b) We need to skip 4 bytes on the stack so we can skip the address of the string, since puts expects the ra to be there, we can't allow it to make eip go there so we need to skip the 4 bytes.
+c) The string was added at the end of the rop. Since we can assume the address doesn't change, we can use gdb to find its address. Since the string ends with a null terminator and our exploit depends on not having that in the rop, we needed to put it at the end of the rop so it won't interrupt with that.

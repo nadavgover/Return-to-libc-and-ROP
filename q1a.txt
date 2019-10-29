@@ -1,0 +1,3 @@
+Using the source code we can note that the sudo program takes no safety measures to strcat insode check_password function.
+The vulnerability is that strcat will just continue putting in the buffer until it reaches '\0'.
+So we can make a buffer overflow by inputting a long input and create a segmentation fault by inputting a large input and we can control it so the return address can be whatever we want.   

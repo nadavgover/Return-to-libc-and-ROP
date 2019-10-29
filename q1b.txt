@@ -1,0 +1,5 @@
+Using gdb command print system we found the address of system.
+Using gdb command find we looked into the .rodata of libc to find /bin/sh
+By overwriting the return address with the system address and then esp+4 with /bin/sh address we can call the shell.
+The reason we need to put junk between the return address and the /bin/sh address is that system expects it's argument in esp+4.
+And that's it, we're all done.

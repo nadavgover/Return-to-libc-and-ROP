@@ -1,0 +1,4 @@
+We found the address of exit as before by using gdb's command print exit.
+This returned an address inside libc.
+Now all we needed to do is to replace the junk from the previous question with the address of exit and after the address of /bin/sh we put the exit code as exit expects its argument there.
+The program did not crash because exit does not return to ra as most functions do.

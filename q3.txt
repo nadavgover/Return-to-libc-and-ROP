@@ -1,0 +1,22 @@
+Using ROP we were able to manipulate auth and make it 1.
+My stack is practically is with this code (the stack is full with addresses but practically this is the idea):
+
+pop eax
+addresses.AUTH  # eax = address of auth
+
+pop edx
+-1  # edx = -1
+
+inc edx
+inc edx  # edx = 1
+
+mov [eax], edx  # auth = 1
+
+address of original return value of check password function
+
+
+I used the search engine to find all the addresses, I chose to use it without the format funcions because it was easier to implement.
+The format find functions were used by me for checking if a gadget exists.
+I chose to put a condition to the find function, the condition is checking wether an address has a null byte or not.
+This is important because if it has a null byte the strcmp will stop copying and we won't be able to exploit the vulnerability.
+Putting it all together we managed to make auth=1 and to print victory.
